@@ -131,7 +131,7 @@ function scrollActive(){
 }
 window.addEventListener('scroll', scrollActive)
 
-/*==================== CHANGE BACKGROUND HEADER ====================*/ 
+/*==================== CHANGE BACKGROUND HEADER ====================*/
 function scrollHeader(){
     const nav = document.getElementById('header')
     // When the scroll is greater than 200 viewport height, add the scroll-header class to the header tag
@@ -139,7 +139,7 @@ function scrollHeader(){
 }
 window.addEventListener('scroll', scrollHeader)
 
-/*==================== SHOW SCROLL UP ====================*/ 
+/*==================== SHOW SCROLL UP ====================*/
 function scrollUp(){
     const scrollUp = document.getElementById('scroll-up');
     // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
@@ -148,7 +148,7 @@ function scrollUp(){
 window.addEventListener('scroll', scrollUp)
 
 
-/*==================== DARK LIGHT THEME ====================*/ 
+/*==================== DARK LIGHT THEME ====================*/
 const themeButton = document.getElementById('theme-button')
 const darkTheme = 'dark-theme'
 const iconTheme = 'uil-sun'
@@ -177,3 +177,29 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+
+/*==================== SENDING EMAIL ====================*/
+const sendEmailButton = document.getElementById('sendEmail');
+
+if (sendEmailButton) {
+	sendEmailButton.addEventListener('click', function () {
+		const name = document.getElementById('client_name').value.trim();
+		const email = document.getElementById('client_email').value.trim();
+		const project = document.getElementById('client_project').value.trim();
+		const message = document.getElementById('client_message').value.trim();
+
+		// Check if any field is empty
+		if (!name || !email || !project || !message) {
+			alert("Please fill out all fields.");
+			return; // Exit the function if any field is empty
+		}
+
+		const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(project)}&body=${encodeURIComponent(`Name: ${name}\nMessage: ${message}`)}`;
+
+		window.open(mailtoLink, '_blank');
+	});
+} else {
+	console.error("Send email button not found!");
+}
+

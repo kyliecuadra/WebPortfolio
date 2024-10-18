@@ -10,8 +10,8 @@
     --hue-color: 225; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
 
     /* HSL color mode */
-    --first-color: hsl(var(--hue-color), 0%, 5%);
-    --first-color-second: hsl(var(--hue-color), 0%, 61%);
+    --first-color: hsl(var(--hue-color), 0%, 61%);
+    --first-color-second: hsl(var(--hue-color), 0%, 5%);
     --first-color-alt: hsl(var(--hue-color), 0%, 10%);
     --first-color-lighter: hsl(var(--hue-color), 0%, 78%);
     --title-color: hsl(var(--hue-color), 8%, 20%);
@@ -72,10 +72,10 @@
 /*========== Variables Dark theme ==========*/
 body.dark-theme{
   /* HSL color mode */
-    --first-color: hsl(var(--hue-color), 0%, 61%);
+    --first-color:  hsl(var(--hue-color), 0%, 5%);
     --first-color-second: hsl(var(--hue-color), 0%, 61%);
     --title-color: hsl(var(--hue-color), 8%, 80%);
-    --text-color: hsl(var(--hue-color), 8%, 45%);
+    --text-color: hsl(var(--hue-color), 8%, 70%);
     --input-color: hsl(var(--hue-color), 8%, 16%);
     --body-color: hsl(var(--hue-color), 8%, 12%);
     --container-color: hsl(var(--hue-color), 8%, 30%);
@@ -98,7 +98,7 @@ body.dark-theme{
 }
 
 .change-theme:hover{
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 /*==================== BASE ====================*/
@@ -154,7 +154,7 @@ img {
   margin-bottom: var(--mb-3);
 }
 
-.section__title, 
+.section__title,
 .section__subtitle {
   text-align: center;
 }
@@ -195,7 +195,7 @@ img {
 }
 
 .nav__logo:hover{
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 .nav__toggle{
@@ -204,7 +204,7 @@ img {
 }
 
 .nav__toggle:hover{
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 
@@ -237,7 +237,7 @@ img {
 }
 
 .nav__link:hover{
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 .nav__icon{
@@ -250,7 +250,7 @@ img {
   bottom: .5rem;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 .nav__close:hover{
@@ -264,7 +264,7 @@ img {
 
 /* Active link */
 .active-link{
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 /* Change background header */
@@ -291,7 +291,7 @@ img {
 
 .home__social-icon{
   font-size: 1.25rem;
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 .home__social-icon:hover{
@@ -331,7 +331,7 @@ img {
 }
 
 .home__scroll-button{
-  color: var(--first-color);
+  color: var(--first-color-second);
   transition: .3s;
 }
 
@@ -357,7 +357,7 @@ img {
 /*==================== BUTTONS ====================*/
 .button{
   display: inline-block;
-  background-color: var(--first-color);
+  background-color: var(--first-color-second);
   color: #fff;
   padding: 1rem;
   border-radius: .5rem;
@@ -376,7 +376,7 @@ img {
 
 .button--white{
   background-color: #fff;
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 .button--white:hover{
@@ -395,7 +395,7 @@ img {
 .button--link{
   padding: 0;
   background-color: transparent;
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 .button--link:hover{
@@ -456,7 +456,7 @@ img {
 
 .skills__icon, .skills__arrow{
   font-size: 2rem;
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 .skills__icon{
@@ -499,7 +499,7 @@ img {
 
 .skills__percentage{
   display: block;
-  background-color: var(--first-color);
+  background-color: var(--first-color-second);
 }
 
 .skills__html{
@@ -547,7 +547,7 @@ img {
 }
 
 .qualification__button:hover{
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 .qualification__icon{
@@ -581,7 +581,7 @@ img {
   display: inline-block;
   width: 13px;
   height: 13px;
-  background-color: var(--first-color);
+  background-color: var(--first-color-second);
   border-radius: 50%;
 }
 
@@ -589,7 +589,7 @@ img {
   display: block;
   width: 1px;
   height: 100%;
-  background-color: var(--first-color);
+  background-color: var(--first-color-second);
   transform: translate(6px, -7px);
 }
 
@@ -603,7 +603,7 @@ img {
 }
 
 .qualification__button.qualification__active{
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 /*==================== SERVICES ====================*/
@@ -628,7 +628,7 @@ img {
 .services__icon{
   display: block;
   font-size: 1.5rem;
-  color: var(--first-color);
+  color: var(--first-color-second);
   margin-bottom: var(--mb-1);
 }
 
@@ -690,13 +690,13 @@ img {
   top: 1rem;
   right: 1rem;
   font-size: 1.5rem;
-  color: var(--first-color);
+  color: var(--first-color-second);
   cursor: pointer;
 }
 
 
 .services__modal-icon{
-  color: var(--first-color);
+  color: var(--first-color-second);
   margin-right: var(--mb-0-25);
 }
 
@@ -741,7 +741,7 @@ img {
 
 .swiper-portfolio-icon{
   font-size: 2rem;
-  color: var(--first-color);
+  color: var(--first-color-second);
 }
 
 .swiper-button-prev{
@@ -757,7 +757,7 @@ img {
 }
 
 .swiper-pagination-bullet-active{
-  background-color: var(--first-color);
+  background-color: var(--first-color-second);
 }
 
 .swiper-button-prev, .swiper-button-next, .swiper-pagination-bullets{
@@ -791,6 +791,18 @@ img {
   width: 232px;
   justify-self: center;
   border-radius: 1rem;
+  mask-image: linear-gradient(to bottom,
+                                rgba(0, 0, 0, 0) 0%,
+                                rgba(0, 0, 0, 0) 20%,  /* Adjusted for stronger fade */
+                                rgba(0, 0, 0, 0) 80%,  /* Adjusted for stronger fade */
+                                rgba(0, 0, 0, 0) 100%),
+                  linear-gradient(to right,
+                                rgba(0, 0, 0, 0) 0%,
+                                rgba(0, 0, 0, 1) 20%,  /* Adjusted for stronger fade */
+                                rgba(0, 0, 0, 1) 80%,  /* Adjusted for stronger fade */
+                                rgba(0, 0, 0, 0) 100%);
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
 }
 
 /*==================== TESTIMONIAL ====================*/
@@ -808,7 +820,7 @@ img {
 
 .contact__icon{
   font-size: 2rem;
-  color: var(--first-color);
+  color: var(--first-color-second);
   margin-right: var(--mb-0-75);
 }
 
@@ -825,7 +837,7 @@ img {
 .contact__content{
   background-color: var(--input-color);
   border-radius: .5rem;
-  padding: .75rem 1rem .25rem; 
+  padding: .75rem 1rem .25rem;
 }
 
 .contact__label{
@@ -905,7 +917,7 @@ img {
   position: fixed;
   right: 1rem;
   bottom: -20%;
-  background-color: var(--first-color);
+  background-color: var(--first-color-second);
   opacity: .8;
   padding: 0 .3rem;
   border-radius: .5rem;
@@ -1073,7 +1085,7 @@ img {
 
   .home__container{
     row-gap: 5rem;
-  }  
+  }
 
   .home__content{
     padding-top: 5.5rem;
