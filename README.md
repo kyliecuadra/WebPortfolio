@@ -18,20 +18,25 @@ I am Christ Kylie A. Cuadra, a software developer based in Philippines. With a p
 
 Here are a few projects I have worked on:
 
-1. **[Project Name 1](link-to-project-1)**
-   - **Description**: A brief description of what this project is about.
-   - **Technologies Used**: [List of technologies used]
-   - **Live Demo**: [Link to live demo if available]
+1. ### 1. Web-Based File Management System
+- **Description**: A web-based system designed to assist the MCC Core Team Leaders and Interns in managing files efficiently.
+- **Tech Stack**: HTML, CSS, JavaScript, PHP, JQuery.
+- **Repository**: [GitHub Repository](https://github.com/ProjectIT-25/Web-Based-Management-System)
 
-2. **[Project Name 2](link-to-project-2)**
-   - **Description**: A brief description of what this project is about.
-   - **Technologies Used**: [List of technologies used]
-   - **Live Demo**: [Link to live demo if available]
+### 2. PPE Scanner
+- **Description**: An application that utilizes machine learning and Python to scan and evaluate students based on the personal protective equipment (PPE) used by welders, ensuring compliance with safety standards. It employs OpenPyXL for Excel file handling to manage and record evaluation results.
+- **Tech Stack**: Python, OpenCV, OpenPyXL.
+- **Repository**: [GitHub Repository](https://github.com/kyliecuadra/ppe_scanner)
 
-3. **[Project Name 3](link-to-project-3)**
-   - **Description**: A brief description of what this project is about.
-   - **Technologies Used**: [List of technologies used]
-   - **Live Demo**: [Link to live demo if available]
+### 3. Web-Based Contribution Monitoring System
+- **Description**: A system for Amadeo National High School (AmaNaHiS) Teachers and Employees Club (TEC) that tracks member contributions efficiently, with features like user access restrictions and PDF summaries. Developed using agile methodologies.
+- **Tech Stack**: HTML, CSS, JavaScript, JQuery, PHP, MySql.
+- **Repository**: [GitHub Repository](https://github.com/kyliecuadra/web-based-contribution-monitoring-system)
+
+### 4. Web-Based Document Flow using Image Processing
+- **Description**: This project utilizes Image Processing and OCR to streamline document management by digitizing and categorizing printed or handwritten documents, enhancing collaboration and efficiency.
+- **Tech Stack**: HTML, CSS, JavaScript, OCR technology.
+- **Repository**: [GitHub Repository](https://github.com/kyliecuadra/Web-Based-Document-Flow-using-Image-Processing)
 
 ## Skills
 
