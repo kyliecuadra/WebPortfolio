@@ -185,7 +185,7 @@ const sendEmailButton = document.getElementById('sendEmail');
 if (sendEmailButton) {
 	sendEmailButton.addEventListener('click', function () {
 		const name = document.getElementById('client_name').value.trim();
-		const email = document.getElementById('client_email').value.trim();
+		const email = "christkylie.cuadra@gmail.com";
 		const project = document.getElementById('client_project').value.trim();
 		const message = document.getElementById('client_message').value.trim();
 
@@ -195,7 +195,7 @@ if (sendEmailButton) {
 			return; // Exit the function if any field is empty
 		}
 
-		const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=christkylie.cuadra@gmail.com&su=${encodeURIComponent(project)}&body=${encodeURIComponent(`Name: ${name}\nMessage: ${message}`)}`;
+		const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(project)}&body=${encodeURIComponent(`Name: ${name}\nMessage: ${message}`)}`;
 
 		window.open(mailtoLink, '_blank');
 	});
