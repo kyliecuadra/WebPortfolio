@@ -195,9 +195,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(project)}&body=${encodeURIComponent(`Name: ${name}\nMessage: ${message}`)}`;
+            const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(project)}&body=${encodeURIComponent(`Name: ${name}\nMessage: ${message}`)}`;
 
-            window.location.href = mailtoLink;
+            window.open(mailtoLink, '_blank');
         });
     } else {
         console.error("Send email button not found!");
