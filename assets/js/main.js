@@ -195,7 +195,7 @@ if (sendEmailButton) {
 			return; // Exit the function if any field is empty
 		}
 
-		const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(project)}&body=${encodeURIComponent(`Name: ${name}\nMessage: ${message}`)}`;
+		const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=christkylie.cuadra@gmail.com&su=${encodeURIComponent(project)}&body=${encodeURIComponent(`Name: ${name}\nMessage: ${message}`)}`;
 
 		window.open(mailtoLink, '_blank');
 	});
