@@ -180,26 +180,27 @@ themeButton.addEventListener('click', () => {
 
 
 /*==================== SENDING EMAIL ====================*/
-const sendEmailButton = document.getElementById('sendEmail');
+document.addEventListener("DOMContentLoaded", function () {
+    const sendEmailButton = document.getElementById('sendEmail');
 
-if (sendEmailButton) {
-	sendEmailButton.addEventListener('click', function () {
-		const name = document.getElementById('client_name').value.trim();
-		const email = "christkylie.cuadra@gmail.com";
-		const project = document.getElementById('client_project').value.trim();
-		const message = document.getElementById('client_message').value.trim();
+    if (sendEmailButton) {
+        sendEmailButton.addEventListener('click', function () {
+            const name = document.getElementById('client_name').value.trim();
+            const email = "christkylie.cuadra@gmail.com"; // Change to dynamic if needed
+            const project = document.getElementById('client_project').value.trim();
+            const message = document.getElementById('client_message').value.trim();
 
-		// Check if any field is empty
-		if (!name || !email || !project || !message) {
-			alert("Please fill out all fields.");
-			return; // Exit the function if any field is empty
-		}
+            if (!name || !project || !message) {
+                alert("Please fill out all fields.");
+                return;
+            }
 
-		const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(project)}&body=${encodeURIComponent(`Name: ${name}\nMessage: ${message}`)}`;
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(project)}&body=${encodeURIComponent(`Name: ${name}\nMessage: ${message}`)}`;
 
-		window.open(mailtoLink, '_blank');
-	});
-} else {
-	console.error("Send email button not found!");
-}
+            window.location.href = mailtoLink;
+        });
+    } else {
+        console.error("Send email button not found!");
+    }
+});
 
