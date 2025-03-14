@@ -38,6 +38,16 @@ Here are a few projects I have worked on:
 - **Tech Stack**: HTML, CSS, JavaScript, OCR technology.
 - **Repository**: [GitHub Repository](https://github.com/kyliecuadra/Web-Based-Document-Flow-using-Image-Processing)
 
+### 5. NXS Spa Web-Based Pointing/Management System
+- **Description**: This web-based spa management tool for tracking client points, services, and staff. Features include point management, QR code generation, and reporting for smooth operations.
+- **Tech Stack**: HTML, CSS, JavaScript, jQuery, Bootstrap 5, PHP, QR Scanner and Generator.
+- **Repository**: [GitHub Repository](https://github.com/kyliecuadra/nxs)
+
+### 6. CvSU Accreditation Document Management System
+- **Description**: This projetc ensures secure, accessible, and version-controlled documents. It streamlines storage, management, and monitoring, enhancing security, data reliability, and workflow efficiency. Key benefits include time savings, quality enforcement, audit trails, and accountability.
+- **Tech Stack**: HTML, CSS, JavaScript, jQuery, Bootstrap 5, PHP.
+- **Repository**: [GitHub Repository](https://github.com/kyliecuadra/adms)
+
 ## Skills
 
 - **Programming Languages**: Java, Javascript, PHP, C++,
