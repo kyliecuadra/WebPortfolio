@@ -18,7 +18,7 @@ I am Christ Kylie A. Cuadra, a software developer based in Philippines. With a p
 
 Here are a few projects I have worked on:
 
-1. ### 1. Web-Based File Management System
+### 1. Web-Based File Management System
 - **Description**: A web-based system designed to assist the MCC Core Team Leaders and Interns in managing files efficiently.
 - **Tech Stack**: HTML, CSS, JavaScript, PHP, JQuery.
 - **Repository**: [GitHub Repository](https://github.com/ProjectIT-25/Web-Based-Management-System)
