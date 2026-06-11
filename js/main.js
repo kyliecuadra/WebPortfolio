@@ -119,11 +119,12 @@ const ScrollReveal = (() => {
    ============================================================ */
 const TypeWriter = (() => {
   const ROLES = [
+    'Software Engineer',
     'Java Developer',
     'Spring Boot Engineer',
     'Backend Developer',
     'Enterprise Systems Dev',
-    'API Architect',
+    'API Engineer',
   ];
 
   let roleIndex  = 0;
@@ -283,8 +284,8 @@ const GitHubAPI = (() => {
     'ppe_scanner',
     'Web-Based-Document-Flow-using-Image-Processing',
     'web-based-contribution-monitoring-system',
-    'WebPortfolio',
-    'Into-the-Void',
+    'nxs',
+    'adms',
     'Web-Based-Management-System',
   ];
 
