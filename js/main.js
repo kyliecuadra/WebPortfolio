@@ -286,7 +286,7 @@ const GitHubAPI = (() => {
     'web-based-contribution-monitoring-system',
     'nxs',
     'adms',
-    'Web-Based-Management-System',
+    'cavshop',
   ];
 
   const LANG_COLORS = {
