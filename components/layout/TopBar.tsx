@@ -17,12 +17,13 @@ export default function TopBar({ active, theme, onNavigate, onToggleTheme, onOpe
       <div className="brand">
         <span className="brk">&gt;_</span> kylie<span className="brk">.</span>dev
       </div>
-      <nav className="topnav">
+      <nav className="topnav" aria-label="Sections">
         {NAV.map((n) => (
           <button
             key={n.id}
             className={`topnav-item ${active === n.id ? "active" : ""}`}
             onClick={() => onNavigate(n.id)}
+            aria-current={active === n.id ? "true" : undefined}
           >
             {n.label}
           </button>

@@ -5,7 +5,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     version: "v1.0.0",
     title: "Foundation Release",
     org: "Cavite State University",
-    period: "[years]",
+    period: "2015 — 2019",
     detail: "BS in Information Technology. Baseline in software fundamentals, databases, and systems thinking.",
   },
   {
@@ -19,7 +19,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     version: "v3.0.0",
     title: "Java Developer",
     org: "Pioneer Insurance & Surety Corp.",
-    period: "[start date] — present",
+    period: "2024 — present",
     detail: "Enterprise insurance platforms on the Sapiens Digital Suite (IDITSuite/PNR) — policy, claims, and validation systems.",
   },
   {

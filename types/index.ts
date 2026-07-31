@@ -32,6 +32,9 @@ export interface Project {
   problem: string;
   solution: string;
   stack: string[];
+  repoUrl?: string;
+  liveUrl?: string;
+  caseStudyUrl?: string;
 }
 
 export interface ExperienceItem {

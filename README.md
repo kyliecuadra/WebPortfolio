@@ -39,11 +39,13 @@ Then open `http://localhost:3000`.
 
 ```
 app/
-  layout.tsx        Root layout, metadata, imports globals.css
+  layout.tsx        Root layout, full metadata (icons, OG, Twitter), skip link
   page.tsx           Top-level orchestrator: theme, active section,
                       command palette state, scroll-to-section
   globals.css         The entire design system (CSS variables, every
                       component's styles) in one place
+  robots.ts          Auto-generated robots.txt (App Router convention)
+  sitemap.ts          Auto-generated sitemap.xml (App Router convention)
 components/
   layout/
     TopBar.tsx        Sticky nav + theme toggle + "⌘K" trigger
@@ -58,7 +60,8 @@ components/
     Stack.tsx          Interactive dependency-chain viewer (click a node
                       to expand its description)
     Projects.tsx        Projects rendered as expandable repositories
-                      (Problem → Solution → Stack per project)
+                      (Problem → Solution → Stack, plus optional
+                      Live demo / Repository / Case study links)
     Experience.tsx     Career history as a version/release log
     Services.tsx        Services listed as API endpoints
     Contact.tsx          Contact form styled as a deploy console
@@ -68,36 +71,78 @@ data/
   you should never need to touch component code just to change copy.
 types/
   index.ts            Shared TypeScript interfaces for the data layer
+public/
+  favicon.svg, favicon.ico, favicon-16.png, favicon-32.png,
+  apple-touch-icon.png, android-chrome-192x192.png,
+  android-chrome-512x512.png, site.webmanifest
+  A real, unique favicon set — not a generic icon. It's the same ">_"
+  glyph used as the brand mark in the top nav, rasterized at every size
+  browsers/devices ask for.
 ```
 
 Each section is its own component and pulls only from its own `data/*.ts`
 file, so adding, removing, or reordering sections is a matter of editing
 `app/page.tsx` and the relevant file in `data/`.
 
+## Accessibility
+
+Every element a visitor can click was previously a `<div onClick>` in a few
+spots (repo rows, stack nodes, command palette results) — those are now real
+`<button>` elements with `aria-expanded`/`aria-controls` where they toggle
+content, so keyboard and screen-reader users get the same functionality as
+mouse users. Also in place: a skip-to-content link (tab from a fresh page
+load to see it), `aria-current` on the active nav item, `aria-live` on the
+contact form's success state, and `prefers-reduced-motion` support. This
+covers the interactive-semantics half of WCAG 2.2 AA — it hasn't been run
+through a full audit (axe, Lighthouse, or a screen reader pass), which is
+worth doing before calling it compliant.
+
+## Responsive design
+
+Rather than hand-tuning a dozen discrete breakpoints for every screen from
+320px to 2560px, most spacing and type now scales fluidly via `clamp()` —
+that's the more maintainable version of "design every breakpoint
+independently" for values that just need to grow smoothly. A handful of
+real *layout* breakpoints remain where content needs to reflow, not just
+resize (480px, 640px, 760px) — e.g. the repo card header wraps to a second
+line on phones instead of squeezing five elements into one row.
+
 ## What's real vs. placeholder
 
 Every project, stack chain, and experience entry reflects real work.
-A few fields are intentionally left as `[bracket]` placeholders rather than
-invented — fill these in before shipping:
+A few fields are intentionally left as placeholders rather than invented —
+fill these in before shipping:
 
-- `data/experience.ts` — exact employment dates
+- `data/experience.ts` — exact employment dates (`[years]`, `[start date]`)
 - `components/sections/Contact.tsx` — the `handleDeploy` submit handler
   currently just fakes a delay and shows a success state. Wire it to a
   real endpoint (an API route, Formspree, Resend, etc.) before relying on it.
+- `data/projects.ts` — `repoUrl` / `liveUrl` / `caseStudyUrl` fields exist on
+  the `Project` type and the UI already renders link buttons for whichever
+  are present, but none are filled in yet since there's nothing real to
+  link to. Add them per project once you have live URLs.
+- `SITE_URL` in `app/layout.tsx`, `app/robots.ts`, and `app/sitemap.ts` —
+  all set to `https://kylie.dev` as a placeholder domain. Update all three
+  to the real deployed domain before launch.
 
 ## What isn't built yet
 
 The original brief describes a much larger platform (live GitHub API
-integration, a blog, full case-study pages per project, deployment-pipeline
-visualization, a code/architecture explorer). This build covers the
+integration, a blog, full case-study pages per project with sequence/ER
+diagrams, a deployment-pipeline visualization, an architecture/database
+explorer, Framer Motion/GSAP animation layer). This build covers the
 highest-leverage layer — the part a visitor actually needs to trust you and
-reach out — deliberately rather than faking the rest with placeholder data.
-Reasonable next additions, roughly in order of impact:
+reach out — deliberately rather than faking the rest with placeholder data
+or animation for its own sake. Reasonable next additions, roughly in order
+of impact:
 
 1. Wire the contact form to a real backend
 2. A dedicated case-study page per featured project (`app/projects/[slug]/page.tsx`)
 3. Live GitHub stats via the GitHub REST API (pinned repos, recent commits)
 4. A blog (MDX-based route under `app/blog/`)
+5. Full accessibility audit (axe/Lighthouse + a screen-reader pass) — the
+   interactive elements are keyboard/screen-reader accessible now, but that's
+   not the same as a verified WCAG 2.2 AA pass
 
 ## Design notes
 

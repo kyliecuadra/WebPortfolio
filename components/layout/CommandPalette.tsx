@@ -43,14 +43,21 @@ export default function CommandPalette({
 
   return (
     <div className="palette-overlay" onClick={onClose}>
-      <div className="palette" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="palette"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Command palette"
+      >
         <div className="palette-input-row">
-          <Command size={15} color="var(--text-faint)" />
+          <Command size={15} color="var(--text-faint)" aria-hidden="true" />
           <input
             ref={inputRef}
             placeholder="Jump to a section or project…"
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
+            aria-label="Search sections and projects"
           />
           <button className="icon-btn" onClick={onClose} aria-label="Close">
             <X size={14} />
@@ -61,10 +68,10 @@ export default function CommandPalette({
             <>
               <div className="palette-group-label">Sections</div>
               {results.nav.map((n) => (
-                <div className="palette-item" key={n.id} onClick={() => onNavigate(n.id)}>
-                  <ChevronRight size={13} color="var(--text-faint)" /> {n.label}
+                <button type="button" className="palette-item" key={n.id} onClick={() => onNavigate(n.id)}>
+                  <ChevronRight size={13} color="var(--text-faint)" aria-hidden="true" /> {n.label}
                   <span className="pi-sub">{n.file}</span>
-                </div>
+                </button>
               ))}
             </>
           )}
@@ -72,10 +79,10 @@ export default function CommandPalette({
             <>
               <div className="palette-group-label">Projects</div>
               {results.proj.map((p) => (
-                <div className="palette-item" key={p.id} onClick={() => onSelectProject(p.id)}>
-                  <GitBranch size={13} color="var(--text-faint)" /> {p.name}
+                <button type="button" className="palette-item" key={p.id} onClick={() => onSelectProject(p.id)}>
+                  <GitBranch size={13} color="var(--text-faint)" aria-hidden="true" /> {p.name}
                   <span className="pi-sub">{p.type}</span>
-                </div>
+                </button>
               ))}
             </>
           )}

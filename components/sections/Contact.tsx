@@ -26,8 +26,8 @@ export default function Contact() {
         </div>
 
         {deployState === "success" ? (
-          <div className="deploy-success">
-            <CheckCircle2 size={18} /> Deployment successful — I&apos;ll respond within 24 hours.
+          <div className="deploy-success" role="status" aria-live="polite">
+            <CheckCircle2 size={18} aria-hidden="true" /> Deployment successful — I&apos;ll respond within 24 hours.
           </div>
         ) : (
           <form className="form-grid" onSubmit={handleDeploy}>
@@ -48,7 +48,7 @@ export default function Contact() {
                 <option value="" disabled>Select one</option>
                 <option>Under ₱5,000</option>
                 <option>₱5,000 – ₱10,000</option>
-                <option>₱11,000 – ₱25,000</option>
+                <option>₱11,000 – ₱20,000</option>
                 <option>Let&apos;s discuss</option>
               </select>
             </div>

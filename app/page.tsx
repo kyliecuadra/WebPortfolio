@@ -64,7 +64,7 @@ export default function Page() {
         onOpenPalette={() => setPaletteOpen(true)}
       />
 
-      <main className="content">
+      <main className="content" id="main-content" tabIndex={-1}>
         <Dashboard onNavigate={goTo} />
         <About />
         <Stack />
