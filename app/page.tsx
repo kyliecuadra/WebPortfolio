@@ -75,7 +75,7 @@ export default function Page() {
       </main>
 
       <div className="footer">
-        © {new Date().getFullYear()} Kylie Cuadra · built as a working software platform, not a template
+        © {new Date().getFullYear()} Kylie Cuadra
       </div>
 
       <CommandPalette
