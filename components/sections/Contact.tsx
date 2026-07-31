@@ -82,7 +82,7 @@ export default function Contact() {
             </div>
             <div className="field">
               <label>Budget</label>
-              <select required defaultValue="">
+              <select id="budget" name="budget" required defaultValue="">
                 <option value="" disabled>Select one</option>
                 <option>Under ₱5,000</option>
                 <option>₱5,000 – ₱10,000</option>
