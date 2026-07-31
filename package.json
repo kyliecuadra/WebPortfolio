@@ -12,7 +12,8 @@
     "next": "^16.2.12",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "lucide-react": "^0.469.0"
+    "lucide-react": "^0.469.0",
+    "resend": "^4.0.1"
   },
   "devDependencies": {
     "typescript": "^5.4.0",

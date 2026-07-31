@@ -114,9 +114,6 @@ A few fields are intentionally left as placeholders rather than invented —
 fill these in before shipping:
 
 - `data/experience.ts` — exact employment dates (`[years]`, `[start date]`)
-- `components/sections/Contact.tsx` — the `handleDeploy` submit handler
-  currently just fakes a delay and shows a success state. Wire it to a
-  real endpoint (an API route, Formspree, Resend, etc.) before relying on it.
 - `data/projects.ts` — `repoUrl` / `liveUrl` / `caseStudyUrl` fields exist on
   the `Project` type and the UI already renders link buttons for whichever
   are present, but none are filled in yet since there's nothing real to
@@ -124,6 +121,33 @@ fill these in before shipping:
 - `SITE_URL` in `app/layout.tsx`, `app/robots.ts`, and `app/sitemap.ts` —
   all set to `https://kylie.dev` as a placeholder domain. Update all three
   to the real deployed domain before launch.
+
+## Contact form — sending real email
+
+The contact form POSTs to `app/api/contact/route.ts`, which sends the
+message via [Resend](https://resend.com). To make it actually work:
+
+1. Create a free Resend account at resend.com
+2. Grab an API key from **API Keys** in the dashboard
+3. Copy `.env.example` to `.env.local` and fill in:
+   - `RESEND_API_KEY` — the key from step 2
+   - `CONTACT_TO_EMAIL` — the inbox you want inquiries to land in
+   - `CONTACT_FROM_EMAIL` — leave as `onboarding@resend.dev` for testing;
+     switch to your own verified domain later for a more professional
+     sender address
+4. Restart `npm run dev` — env vars are only read on server start
+5. On Vercel: **Project Settings → Environment Variables**, add the same
+   three, then redeploy (env var changes don't apply retroactively to
+   existing deployments)
+
+Until those env vars are set, the API route fails gracefully with a visible
+error message in the form rather than a silent failure — it won't pretend
+to succeed if email isn't actually configured.
+
+The form also has a honeypot field (`company`, visually hidden from real
+visitors) as basic spam protection — submissions that fill it in are
+silently accepted without sending an email, so bots don't get useful
+feedback either way.
 
 ## What isn't built yet
 
@@ -136,11 +160,10 @@ reach out — deliberately rather than faking the rest with placeholder data
 or animation for its own sake. Reasonable next additions, roughly in order
 of impact:
 
-1. Wire the contact form to a real backend
-2. A dedicated case-study page per featured project (`app/projects/[slug]/page.tsx`)
-3. Live GitHub stats via the GitHub REST API (pinned repos, recent commits)
-4. A blog (MDX-based route under `app/blog/`)
-5. Full accessibility audit (axe/Lighthouse + a screen-reader pass) — the
+1. A dedicated case-study page per featured project (`app/projects/[slug]/page.tsx`)
+2. Live GitHub stats via the GitHub REST API (pinned repos, recent commits)
+3. A blog (MDX-based route under `app/blog/`)
+4. Full accessibility audit (axe/Lighthouse + a screen-reader pass) — the
    interactive elements are keyboard/screen-reader accessible now, but that's
    not the same as a verified WCAG 2.2 AA pass
 
