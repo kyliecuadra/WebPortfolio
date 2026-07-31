@@ -1,19 +1,51 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import WindowChrome from "@/components/ui/WindowChrome";
 
-type DeployState = "idle" | "deploying" | "success";
+type DeployState = "idle" | "deploying" | "success" | "error";
 
 export default function Contact() {
   const [deployState, setDeployState] = useState<DeployState>("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  function handleDeploy(e: FormEvent<HTMLFormElement>) {
+  async function handleDeploy(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setDeployState("deploying");
-    // Replace with a real submit handler (API route, email service, etc).
-    setTimeout(() => setDeployState("success"), 1100);
+    setErrorMessage(null);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      projectType: data.get("projectType"),
+      budget: data.get("budget"),
+      timeline: data.get("timeline"),
+      email: data.get("email"),
+      requirements: data.get("requirements"),
+      company: data.get("company"), // honeypot
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+
+      if (!res.ok || !result.ok) {
+        setErrorMessage(result.error || "Something went wrong. Please try again.");
+        setDeployState("error");
+        return;
+      }
+
+      setDeployState("success");
+      form.reset();
+    } catch {
+      setErrorMessage("Couldn't reach the server. Check your connection and try again.");
+      setDeployState("error");
+    }
   }
 
   return (
@@ -31,9 +63,15 @@ export default function Contact() {
           </div>
         ) : (
           <form className="form-grid" onSubmit={handleDeploy}>
+            {/* Honeypot: hidden from real users, bots tend to fill every field they find */}
+            <div className="hp-field" aria-hidden="true">
+              <label htmlFor="company">Company</label>
+              <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
+
             <div className="field">
-              <label>Project type</label>
-              <select required defaultValue="">
+              <label htmlFor="projectType">Project type</label>
+              <select id="projectType" name="projectType" required defaultValue="">
                 <option value="" disabled>Select one</option>
                 <option>Enterprise backend</option>
                 <option>AI / computer vision</option>
@@ -53,8 +91,8 @@ export default function Contact() {
               </select>
             </div>
             <div className="field">
-              <label>Timeline</label>
-              <select required defaultValue="">
+              <label htmlFor="timeline">Timeline</label>
+              <select id="timeline" name="timeline" required defaultValue="">
                 <option value="" disabled>Select one</option>
                 <option>ASAP</option>
                 <option>Within a month</option>
@@ -63,16 +101,25 @@ export default function Contact() {
               </select>
             </div>
             <div className="field">
-              <label>Contact email</label>
-              <input type="email" required placeholder="you@company.com" />
+              <label htmlFor="email">Contact email</label>
+              <input id="email" name="email" type="email" required placeholder="you@company.com" />
             </div>
             <div className="field full">
-              <label>Requirements</label>
-              <textarea required placeholder="What are you building?" />
+              <label htmlFor="requirements">Requirements</label>
+              <textarea id="requirements" name="requirements" required placeholder="What are you building?" />
             </div>
+
+            {deployState === "error" && errorMessage && (
+              <div className="field full">
+                <div className="deploy-error" role="alert">
+                  <AlertCircle size={16} aria-hidden="true" /> {errorMessage}
+                </div>
+              </div>
+            )}
+
             <div className="field full">
               <button className="btn btn-primary" type="submit" disabled={deployState === "deploying"}>
-                <Send size={14} />
+                <Send size={14} aria-hidden="true" />
                 {deployState === "deploying" ? "Deploying…" : "Deploy message"}
               </button>
             </div>
