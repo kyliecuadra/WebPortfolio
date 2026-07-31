@@ -29,8 +29,8 @@ export default function TopBar({ active, theme, onNavigate, onToggleTheme, onOpe
         ))}
       </nav>
       <div className="topbar-actions">
-        <button className="kbtn" onClick={onOpenPalette}>
-          <Search size={13} /> Search <kbd>⌘K</kbd>
+        <button className="kbtn" onClick={onOpenPalette} aria-label="Search">
+          <Search size={13} /> <span>Search</span> <kbd>⌘K</kbd>
         </button>
         <button className="icon-btn" onClick={onToggleTheme} aria-label="Toggle theme">
           {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}

@@ -62,17 +62,27 @@ button, input, select, textarea { font: inherit; }
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
-.brand { display:flex; align-items:center; gap:8px; font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: .02em; white-space: nowrap; }
+.brand { display:flex; align-items:center; gap:8px; font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: .02em; white-space: nowrap; flex-shrink: 0; }
 .brand .brk { color: var(--amber); }
-.topnav { display:flex; align-items:center; gap: 2px; flex: 1; overflow-x: auto; }
+.topnav {
+  display:flex; align-items:center; gap: 2px;
+  flex: 1; min-width: 0; /* without this a flex child won't shrink below its content width — it forces the whole topbar to overflow instead of scrolling internally */
+  overflow-x: auto; overflow-y: hidden;
+  scrollbar-width: none; -ms-overflow-style: none;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+}
+.topnav::-webkit-scrollbar { display: none; }
 .topnav-item {
   font-family: var(--mono); font-size: 12.5px; color: var(--text-dim);
   background: none; border: 1px solid transparent; padding: 7px 12px; border-radius: 6px;
   cursor: pointer; white-space: nowrap; transition: all .15s ease;
+  flex-shrink: 0; scroll-snap-align: start;
 }
 .topnav-item:hover { color: var(--text); background: var(--surface-2); }
 .topnav-item.active { color: var(--text); background: var(--surface-2); border-color: var(--border); }
-.topbar-actions { display:flex; align-items:center; gap: 10px; }
+.topbar-actions { display:flex; align-items:center; gap: 10px; flex-shrink: 0; }
 .kbtn {
   display:flex; align-items:center; gap:8px;
   font-family: var(--mono); font-size: 12px; color: var(--text-dim);
@@ -81,8 +91,15 @@ button, input, select, textarea { font: inherit; }
 }
 .kbtn:hover { border-color: var(--text-faint); color: var(--text); }
 .kbtn kbd { font-family: var(--mono); font-size: 10.5px; background: var(--surface-2); padding: 1px 5px; border-radius: 3px; border: 1px solid var(--border); }
-.icon-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; width: 32px; height: 32px; display:flex; align-items:center; justify-content:center; color: var(--text-dim); cursor: pointer; }
+.icon-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; width: 32px; height: 32px; display:flex; align-items:center; justify-content:center; color: var(--text-dim); cursor: pointer; flex-shrink: 0; }
 .icon-btn:hover { color: var(--text); border-color: var(--text-faint); }
+
+@media (max-width: 640px) {
+  .topbar { gap: 10px; padding: 0 12px; }
+  .kbtn { padding: 6px 8px; }
+  .kbtn span, .kbtn kbd { display: none; }
+  .topnav-item { padding: 7px 10px; font-size: 12px; }
+}
 
 .content { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 40px 20px 100px; }
 section { margin-bottom: 56px; scroll-margin-top: 76px; }
