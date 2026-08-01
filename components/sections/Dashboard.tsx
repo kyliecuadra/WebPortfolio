@@ -37,7 +37,14 @@ export default function Dashboard({ onNavigate }: { onNavigate: (id: string) => 
             </div>
             <div className="stat-row">
               <span className="stat-label">Team</span>
-              <span className="stat-value">Bracket Systems (w/ Prince Macalino)</span>
+              <a
+                className="stat-value stat-link"
+                href="https://bracketsystems.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Bracket Systems (w/ Prince Macalino)
+              </a>
             </div>
             <div className="stat-row">
               <span className="stat-label">Response time</span>
